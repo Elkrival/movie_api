@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card';
+import Button from './Button';
 
 const Popular = ({ movie }) =>{
     const { title, poster } = movie;
@@ -9,6 +10,7 @@ const Popular = ({ movie }) =>{
                 title={ title }
                 poster={ poster}
             />
+            <Button btnText="hola"/>
         </div>
     )
   }
