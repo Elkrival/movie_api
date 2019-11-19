@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Button from './Button';
 import { doFetchMovies } from '../../../store/actions/actions';
 
 const mapDispatchToProps = (dispatch) =>{
@@ -33,6 +32,10 @@ class MovieSearch extends Component {
       const query = this.state.topRated;
       this.props.onFetchTop(query);
   }
-  render() {}
+  render() {
+      return (
+          null
+      )
+  }
 }
 export default connect(null, mapDispatchToProps)(MovieSearch)

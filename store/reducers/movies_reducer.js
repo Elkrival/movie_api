@@ -2,9 +2,8 @@ import { MOVIES_FETCH, MOVIES_ADD } from '../actions/action_types'
 
 const INITIAL_STATE = [];
 
-const applyAddMovies = (state, action) => {
-    console.log(state, action);
-    return state
+const applyAddMovies = (action) => {
+    return action.payload
 }
 
 function movieReducer(state = INITIAL_STATE, action) {
@@ -12,12 +11,11 @@ function movieReducer(state = INITIAL_STATE, action) {
         case MOVIES_FETCH: {
             return state
         }
-        case MOVIES_FETCH: {
-            return applyAddMovies(state, action)
+        case MOVIES_ADD: {
+            return applyAddMovies(action)
         }
         default:
             return state
     }
 }
 export default movieReducer
-/*/*0a12f622cf73e8bbf38643081189bb9c*/

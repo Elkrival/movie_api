@@ -7,6 +7,7 @@ const API_KEY = `0a12f622cf73e8bbf38643081189bb9c`
 const fetchMovies = ( query ) => {
     const URL = `https://api.themoviedb.org/3/movie/${ query }?api_key=${ API_KEY}`
     return fetch(`${ URL }`).then(response => {
+        debugger
         return response.json()
     })
 }

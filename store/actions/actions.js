@@ -1,11 +1,12 @@
 import { MOVIES_FETCH } from './action_types';
 import { MOVIES_ADD } from './action_types'
 
-const doAddMovies = (movies) => ({
+const doAddMovies = ({ results }) => {
+    return {
     type: MOVIES_ADD,
-    movies
-});
-const doFetchMovies = (query) =>(console.log(query, '-------'),{
+    payload: results }
+}
+const doFetchMovies = (query) =>({
     type: MOVIES_FETCH,
     query
 })
