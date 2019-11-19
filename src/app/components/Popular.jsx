@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Card from './Card';
 import Button from './Button';
 
-const Popular = ({ movie }) =>{
-    const { title, poster } = movie;
-    return(
-        <div className="top_rated">
+class Popular extends Component {
+    constructor(props){
+        super(props)
+        this.state = { query: 'popular'}
+        console.log(props)
+        
+    }
+
+    render(){
+        const { title, poster } = this.props
+        return (
+            <div className="top_rated">
             <Card 
                 title={ title }
                 poster={ poster}
             />
-            <Button btnText="hola"/>
+            <Button btnText="click"/>
         </div>
-    )
-  }
+        )
+    }
+}
 export default Popular;

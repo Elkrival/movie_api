@@ -1,18 +1,20 @@
-const INITIAL_STATE = [
-    {
-        title: `My fair lady.`,
-        poster: `This one`,
-        id: 123
-    },
-    {
-        title: `Redux`,
-        poster: `fantastic`,
-        id: 432
-    }
-]
+import { MOVIES_FETCH, MOVIES_ADD } from '../actions/action_types'
+
+const INITIAL_STATE = [];
+
+const applyAddMovies = (state, action) => {
+    console.log(state, action);
+    return state
+}
 
 function movieReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
+        case MOVIES_FETCH: {
+            return state
+        }
+        case MOVIES_FETCH: {
+            return applyAddMovies(state, action)
+        }
         default:
             return state
     }

@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 import { getMovies } from '../../../store/selectors/movies';
 import Popular from './Popular';
 import TopRated from './TopRated';
+import Button from './Button';
 
-const mapStateToProps = (state) =>({ movies: getMovies(state)});
+const mapStateToProps = (state) =>{
+  state;
+  debugger
+}
 
 const Hero = ({ movies }) =>
   <div className="Hero">
@@ -12,6 +16,7 @@ const Hero = ({ movies }) =>
       <Popular
         key={movie.id}
         movie={movie}
+        onFindPopular={ () => {}}
       />
     )}
     {(movies || []).map(movie =>
