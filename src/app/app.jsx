@@ -1,10 +1,9 @@
 import React from 'react';
-import Button from './components/Button';
 import Hero from './components/Hero';
 
-const App = ({ movies }) => 
+const App = () => 
     <div>
-       <Hero movies={ movies } /> 
+       <Hero/> 
     </div>
 
 export default App;

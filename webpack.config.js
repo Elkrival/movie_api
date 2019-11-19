@@ -1,7 +1,7 @@
 const { HotModuleReplacementPlugin } = require('webpack');
 
 module.exports = {
-    entry: `./src/index.js`,
+    entry: `./index.js`,
     module: {
         rules: [
             {
