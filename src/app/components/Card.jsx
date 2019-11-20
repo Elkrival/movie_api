@@ -3,6 +3,7 @@ import Poster from './Poster';
 import Info from './Info';
 
 const Card = ({ title, poster }) =>{
+    
     return(
         <div>
             <Info 

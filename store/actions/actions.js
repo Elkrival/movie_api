@@ -1,13 +1,18 @@
-import { MOVIES_FETCH } from './action_types';
-import { MOVIES_ADD } from './action_types'
+import { MOVIES_FETCH, TOP_MOVIES_ADD, POPULAR_MOVIES_ADD } from './action_types';
 
-const doAddMovies = ({ results }) => {
+const doAddPopularMovies = ({ results }) => {
     return {
-    type: MOVIES_ADD,
+    type: POPULAR_MOVIES_ADD,
     payload: results }
 }
 const doFetchMovies = (query) =>({
     type: MOVIES_FETCH,
     query
-})
-export { doAddMovies, doFetchMovies }
+});
+const doAddTopRatedMovies = ({ results }) =>{
+    return {
+        type: TOP_MOVIES_ADD,
+        payload: results
+    }
+}
+export { doAddPopularMovies, doFetchMovies, doAddTopRatedMovies }

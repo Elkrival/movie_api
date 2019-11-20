@@ -1,3 +1,4 @@
 export const MOVIE_INFO = `MOVIE_INFO`
 export const MOVIES_FETCH = `MOVIES_FETCH`
-export const MOVIES_ADD = `MOVIES_ADD`
+export const POPULAR_MOVIES_ADD = `POPULAR_MOVIES_ADD`;
+export const TOP_MOVIES_ADD = `TOP_MOVIES_ADD`

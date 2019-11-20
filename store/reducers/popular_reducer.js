@@ -1,4 +1,4 @@
-import { MOVIES_FETCH, MOVIES_ADD } from '../actions/action_types'
+import { MOVIES_FETCH, POPULAR_MOVIES_ADD } from '../actions/action_types'
 
 const INITIAL_STATE = [];
 
@@ -6,16 +6,16 @@ const applyAddMovies = (action) => {
     return action.payload
 }
 
-function movieReducer(state = INITIAL_STATE, action) {
+function popularReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case MOVIES_FETCH: {
             return state
         }
-        case MOVIES_ADD: {
+        case POPULAR_MOVIES_ADD: {
             return applyAddMovies(action)
         }
         default:
             return state
     }
 }
-export default movieReducer
+export default popularReducer
