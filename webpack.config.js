@@ -1,4 +1,5 @@
 const { HotModuleReplacementPlugin } = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: `./index.js`,
@@ -24,7 +25,10 @@ module.exports = {
         filename: `bundle.js`
     },
     plugins: [
-        new HotModuleReplacementPlugin
+        new HotModuleReplacementPlugin, 
+        new HtmlWebpackPlugin({
+            template: 'dist/index.html'
+        })
     ], 
     devServer: {
         contentBase: `./dist`, hot: true, historyApiFallback: true
