@@ -1,15 +1,20 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 import Hero from './components/Hero';
-import MovieSearch from './components/Movie_Search';
+import Movie from './components/Movie';
 
 const App = () => 
-    <div>
+    <Router>
         <div>
-            <MovieSearch/>
+            <Switch>
+                <Route exact path="/" component={Hero} />
+                <Route exact path="/movie" component={Movie} />
+            </Switch>
         </div>
-        <div>
-            <Hero/> 
-        </div>
-    </div>
-
+    </Router>
 export default App;

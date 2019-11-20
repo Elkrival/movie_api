@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Card from './Card';
 import Button from './Button';
-import { movieInfo } from '../../../store/actions/actions';
+import { showSelectedMovie } from '../../../store/actions/actions';
 
 const mapDispatchToProps = (dispatch) => ({
-    onMovie: id => dispatch(movieInfo(id))
+    onMovie: movie => dispatch(showSelectedMovie(movie))
 })
 const Movie = () =>{
     return(

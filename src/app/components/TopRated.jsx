@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from './Card';
 
-class TopRated extends Component {
-    constructor(props){
-        super(props)
-    }
-    render(){
-        const { title, poster } = this.props
-        return (
-            <div className="top_rated">
+const TopRated = ({ movie }) =>{
+    const { title, poster } = movie;
+    return(
+        <div className="top_rated">
             <Card 
                 title={ title }
-                poster={ poster}
+                poster = { poster}
             />
         </div>
-        )
-    }
-}
+    )
+  }
 export default TopRated;
