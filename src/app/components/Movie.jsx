@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useParams } from "react-router-dom";
 import Card from './Card';
 import Button from './Button';
 import { showSelectedMovie } from '../../../store/actions/actions';
 
+// let id = useParams()
 const mapDispatchToProps = (dispatch) => ({
-    onMovie: movie => dispatch(showSelectedMovie(movie))
+    onMovie: () => dispatch(showSelectedMovie(id))
 })
-const Movie = () =>{
+const Movie = ({ movie }) =>{
     return(
         <div className="top_rated">
             <Card 

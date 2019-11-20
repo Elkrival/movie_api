@@ -2,8 +2,10 @@ import { MOVIE_INFO } from '../actions/action_types';
 const INITIAL_STATE = [];
 
 const showMovie = (state, action) =>{
-    console.log(action);
-    return [ ...state, action.id ];
+    state;
+    action;
+    debugger;
+    return action.payload
 }
 function movieInfoReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
