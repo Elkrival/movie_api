@@ -3,6 +3,7 @@ import { MOVIES_FETCH, POPULAR_MOVIES_ADD } from '../actions/action_types'
 const INITIAL_STATE = [];
 
 const applyAddMovies = (action) => {
+    localStorage.setItem(`popularState`, JSON.stringify(action.payload))
     return action.payload
 }
 

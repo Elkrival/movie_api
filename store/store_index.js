@@ -3,11 +3,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from './reducers/root_reducer';
 import createSagaMiddleware from 'redux-saga'
 import { watchAll } from './sagas'
+import {loadState} from './localStorage';
 
 const sagaMiddleware = createSagaMiddleware()
 // const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const persistedState = loadState();
 
-const store = createStore(rootReducer, undefined , compose(applyMiddleware(sagaMiddleware), composeWithDevTools()));
+const store = createStore(rootReducer, persistedState , compose(applyMiddleware(sagaMiddleware), composeWithDevTools()));
 sagaMiddleware.run(watchAll);
 
 export default store;

@@ -12,6 +12,9 @@ const mapStateToProps = (state, ownProps) =>{
    if(ownProps.match.path.includes('top')) {
     return { movieList: getTopRated(state)};
     }
+    if(state.currentMovieState.hasOwnProperty('title')) {
+        return { currentMovie: getMovieInfo(state) }
+    }
 }
 const Movie = (props) =>{
     const id = props.match.params.id
