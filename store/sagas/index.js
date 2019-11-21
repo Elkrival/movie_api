@@ -1,13 +1,15 @@
-import { takeEvery, all } from 'redux-saga/effects';
-import { MOVIES_FETCH } from '../actions/action_types';
+import { takeEvery, all, takeLatest, take } from 'redux-saga/effects';
+import { MOVIES_FETCH, MOVIE_CONFIG } from '../actions/action_types';
 import { handleMovies } from './movie';
+import { handleConfig } from './url_config'
 
-export function* watchAll() {
-    yield all([
-        takeEvery(MOVIES_FETCH, handleMovies)
-    ])
+function* watchAll() {
+    yield takeEvery(MOVIES_FETCH, handleMovies)
 };
+function* getConfig() {
+    yield handleConfig()
+}
 
-export function* helloSaga(){
-    console.log('Hello')
+export function* rootSaga () {
+    yield all([ watchAll(), getConfig()])
 }

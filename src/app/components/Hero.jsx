@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from "react-router-dom";
 import { getPopular, getTopRated } from '../../../store/selectors/movies';
 import Popular from './Popular';
 import TopRated from './TopRated';
@@ -21,17 +22,28 @@ class Hero extends Component{
     return null;
   }
   render(){
-  return(<div className="Hero">
+  return(
+    <div className="wrapper">
     <MovieSearch/>
-    {this.state.popular.map(movie => <Popular
-        key={movie.id}
-        movie={movie}
-      />)}
-    {this.state.topRated.map(movie => <TopRated 
-       key={movie.id}
-       movie={movie} 
-      />)}
-  </div>)
-}
+    <div className="title_container"><h1>Popular</h1></div>
+    <div className="card_container">
+        {this.state.popular.map(movie => 
+        <NavLink to={`/movie/popular/${ movie.id }`}><Popular
+          key={movie.id}
+          movie={movie}
+        />
+        </NavLink>)}
+      </div>
+      <div className="title_container"><h1>Top Rated</h1></div>
+      <div className="card_container">
+          {this.state.topRated.map(movie => 
+            <NavLink to={`/movie/top/${ movie.id }`}>
+              <TopRated 
+                key={movie.id}
+                movie={movie} />
+            </NavLink>)}
+      </div>
+      </div>)
+  }
 }
 export default connect(mapStateToProps)(Hero);

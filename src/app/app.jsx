@@ -10,7 +10,7 @@ import Movie from './components/Movie';
 
 const App = () => 
     <Router>
-        <div>
+        <div className="wrapper">
             <Switch>
                 <Route exact path="/" component={Hero} />
                 <Route exact path="/movie/popular/:id" component={Movie} />

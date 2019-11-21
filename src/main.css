@@ -1,0 +1,25 @@
+.wrapper{
+    display: grid;
+    grid-template-rows: 2fr;
+    grid-gap: 2em;
+    grid-auto-rows: minmax(100px, auto);
+    border: solid red 1px;
+
+}
+.title_container {
+    margin: 0 auto;
+}
+.card_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+    grid-auto-rows: minmax(100px, auto);
+
+}
+.card_container > div {
+    background: #eee;
+    padding: 1rem
+}
+.card_container > div:nth-child(odd) {
+    background: #ddd;
+}

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { doFetchMovies } from '../../../store/actions/actions';
+import { doFetchMovies, doAddMovieConfig} from '../../../store/actions/actions';
 
 const mapDispatchToProps = (dispatch) =>{
     return {
         onFetchPopular: query => dispatch(doFetchMovies(query)),
-        onFetchTop: query => dispatch(doFetchMovies(query))
+        onFetchTop: query => dispatch(doFetchMovies(query)),
+        onFetchConfig: () => dispatch(doAddMovieConfig())
     }
 }
 class MovieSearch extends Component {
@@ -17,11 +18,13 @@ class MovieSearch extends Component {
     };
     console.log(props)
     this.handlePopular = this.handlePopular.bind(this);
-    this.handleTopRated = this.handleTopRated.bind(this)
+    this.handleTopRated = this.handleTopRated.bind(this);
+    this.handleConfig = this.handleConfig.bind(this);
   };
   componentDidMount() {
       this.handlePopular();
       this.handleTopRated();
+      this.handleConfig()
   }
   
   handlePopular() {
@@ -31,6 +34,9 @@ class MovieSearch extends Component {
   handleTopRated(){
       const query = this.state.topRated;
       this.props.onFetchTop(query);
+  };
+  handleConfig() {
+      this.props.onFetchConfig()
   }
   render() {
       return (

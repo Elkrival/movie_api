@@ -1,18 +1,18 @@
 import React from 'react';
 import Poster from './Poster';
-import Info from './Info';
+import Title from './Title';
 
-const Card = ({ title, poster }) =>{
-    
+const Card = ({ title, poster_path, id }) =>{
+    const imagePath = `https://image.tmdb.org/t/p/w500`
     return(
-        <div>
-            <Info 
+        <div className="card">
+            {/* <Title 
                 title={ title }
-                poster={ poster }
-            />
+                id={ id }
+            /> */}
             <Poster 
-                title={ title }
-                poster={ poster }
+                poster_path={ poster_path }
+                imagePath={ imagePath }
             />
         </div>
     )

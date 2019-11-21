@@ -1,7 +1,9 @@
 import React from 'react';
-
-const Poster = ({ poster }) =>
+import {
+    NavLink
+  } from "react-router-dom";
+const Poster = ({ poster_path, imagePath }) =>
         <div>
-            <h1>{ poster }</h1>
+           <img src={`${imagePath }${poster_path}`} />
         </div>
 export default Poster;

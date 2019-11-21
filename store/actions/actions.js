@@ -1,4 +1,4 @@
-import { MOVIES_FETCH, TOP_MOVIES_ADD, POPULAR_MOVIES_ADD, MOVIE_INFO } from './action_types';
+import { MOVIES_FETCH, TOP_MOVIES_ADD, POPULAR_MOVIES_ADD, MOVIE_INFO, MOVIE_CONFIG } from './action_types';
 
 const doAddPopularMovies = ({ results }) => {
     return {
@@ -21,4 +21,10 @@ const showSelectedMovie = (payload) =>{
         payload
     }
 }
-export { doAddPopularMovies, doFetchMovies, doAddTopRatedMovies, showSelectedMovie }
+const doAddMovieConfig = ( payload ) => {
+    return {
+        type: MOVIE_CONFIG,
+        payload
+    }
+}
+export { doAddPopularMovies, doFetchMovies, doAddTopRatedMovies, showSelectedMovie, doAddMovieConfig }

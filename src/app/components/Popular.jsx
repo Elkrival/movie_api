@@ -1,18 +1,15 @@
 import React from 'react';
 import Card from './Card';
-import {
-    Link
-  } from "react-router-dom";
+
 const Popular = ({ movie }) =>{
-    const { title, poster, id } = movie;
+    const { title, poster_path, id } = movie;
     return(
-        <div className="top_rated">
-            <Link to={`/movie/popular/${ id }`}><Card 
+        <Card className="card"
                 title={ title }
-                poster = { poster}
-            />
-            </Link>
-        </div>
+                poster_path = { poster_path}
+                id= { id } >
+            
+        </Card>
     )
   }
 export default Popular;
