@@ -7,7 +7,7 @@ const Popular = ({ movie }) =>{
     const { title, poster, id } = movie;
     return(
         <div className="top_rated">
-            <Link to={`/movie/${ id }`}><Card 
+            <Link to={`/movie/popular/${ id }`}><Card 
                 title={ title }
                 poster = { poster}
             />

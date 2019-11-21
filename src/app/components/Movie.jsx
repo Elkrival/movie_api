@@ -1,32 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { useParams } from "react-router-dom";
 import Card from './Card';
 import Button from './Button';
+import { getTopRated, getPopular, getMovieInfo} from '../../../store/selectors/movies';
 import { showSelectedMovie } from '../../../store/actions/actions';
 
-const mapDispatchToProps = (dispatch) => ({
-    onMovie: () => dispatch(showSelectedMovie(id))
-})
-class Movie extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { popular: [], topRated: [] }
-      };
-      static getDerivedStateFromProps(props) {
-        console.log(props)
-        return {}
-      }
-      render(){ 
-        return(
-            <div className="top_rated">
-                <Card 
-                    title='This is'
-                    poster='A single'
-                />
-                <Button btnText="hola"/>
-            </div>
-        )
+const mapStateToProps = (state, ownProps) =>{
+   if(ownProps.match.path.includes('popular')) {
+       return { movieList: getPopular(state)};
+   }
+   if(ownProps.match.path.includes('top')) {
+    return { movieList: getTopRated(state)};
     }
-  }
-export default connect(null, mapDispatchToProps)(Movie);
+}
+const Movie = (props) =>{
+    const id = props.match.params.id
+    props.dispatch(showSelectedMovie({ id, selectedMovieList: props.movieList}))
+    const movie = props.movieList.filter(el => el.id === +id)[0];
+    const { title } = movie;
+    return (
+        <div>
+            <Card title={ title } />
+            Hi
+        </div>
+    )
+}
+export default connect(mapStateToProps)(Movie);

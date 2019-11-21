@@ -15,10 +15,10 @@ const doAddTopRatedMovies = ({ results }) =>{
         payload: results
     }
 }
-const showSelectedMovie = ({ movie }) =>{
+const showSelectedMovie = (payload) =>{
     return {
         type: MOVIE_INFO,
-        payload: movie
+        payload
     }
 }
 export { doAddPopularMovies, doFetchMovies, doAddTopRatedMovies, showSelectedMovie }
