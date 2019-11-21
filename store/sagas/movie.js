@@ -1,11 +1,10 @@
 import { call, put } from 'redux-saga/effects';
-import { doAddPopularMovies, doAddTopRatedMovies } from '../actions/actions';
+import { doAddPopularMovies, doAddTopRatedMovies, doAddMovieDetails } from '../actions/actions';
 
-const API_KEY = `0a12f622cf73e8bbf38643081189bb9c`
 
 
 const fetchMovies = ( query ) => {
-    const URL = `https://api.themoviedb.org/3/movie/${ query }?api_key=${ API_KEY}`
+    const URL = `https://api.themoviedb.org/3/movie/${ query }?api_key=${ process.env.API_KEY }&append_to_response=videos,movie,images`
     return fetch(`${ URL }`).then(response => {
         return response.json()
     })
@@ -16,4 +15,20 @@ function* handleMovies(action) {
     if ( query === 'popular') yield put(doAddPopularMovies(result));
     if (query === 'top_rated') yield put(doAddTopRatedMovies(result))
 };
-export { handleMovies };
+
+const fetchMovie = ( action ) =>{
+    const id = action.payload;
+    const URL = `https://api.themoviedb.org/3/movie/${ id }?api_key=${ process.env.API_KEY }&append_to_response=videos,images`
+    return fetch(`${ URL }`).then(response => response.json());
+};
+function* handleMovieDetails(id) {
+    try{
+    const result = yield call(fetchMovie,id);
+    yield put(doAddMovieDetails(result));
+    console.log(result)
+    return result;
+    }catch(e) {
+        console.log(e)
+    }
+  }
+export { handleMovies, handleMovieDetails};

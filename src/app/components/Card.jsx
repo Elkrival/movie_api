@@ -2,8 +2,7 @@ import React from 'react';
 import Poster from './Poster';
 import Title from './Title';
 
-const Card = ({ title, poster_path, id }) =>{
-    const imagePath = `https://image.tmdb.org/t/p/w500`
+const Card = ({ title, poster_path, id, imagePath }) =>{
     return(
         <div className="card">
             {/* <Title 

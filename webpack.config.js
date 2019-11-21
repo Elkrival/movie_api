@@ -1,4 +1,4 @@
-const { HotModuleReplacementPlugin } = require('webpack');
+const { HotModuleReplacementPlugin, EnvironmentPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -28,6 +28,9 @@ module.exports = {
         new HotModuleReplacementPlugin, 
         new HtmlWebpackPlugin({
             template: 'dist/index.html'
+        }),
+        new EnvironmentPlugin({ 
+            "API_KEY": '0a12f622cf73e8bbf38643081189bb9c'
         })
     ], 
     devServer: {

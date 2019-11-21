@@ -6,7 +6,10 @@ function getTopRated(state) {
 function getPopular(state) {
     return state.popularState
 }
-function getMovieInfo(state) {
+function getMovieDetails(state) {
     return state.currentMovieState
 }
-export { getPopular, getTopRated, getMovieInfo }
+function getConfig(state) {
+    return state.configState
+}
+export { getPopular, getTopRated, getMovieDetails, getConfig }

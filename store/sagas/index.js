@@ -1,6 +1,6 @@
 import { takeEvery, all, takeLatest, take } from 'redux-saga/effects';
-import { MOVIES_FETCH, MOVIE_CONFIG } from '../actions/action_types';
-import { handleMovies } from './movie';
+import { MOVIES_FETCH, MOVIE_CONFIG, RECEIVE_MOVIE_DATA, MOVIE_INFO } from '../actions/action_types';
+import { handleMovies, handleMovieDetails } from './movie';
 import { handleConfig } from './url_config'
 
 function* watchAll() {
@@ -9,7 +9,9 @@ function* watchAll() {
 function* getConfig() {
     yield handleConfig()
 }
-
+function* getDetails() {
+    yield takeLatest(MOVIE_INFO, handleMovieDetails)
+}
 export function* rootSaga () {
-    yield all([ watchAll(), getConfig()])
+    yield all([ watchAll(), getConfig(), getDetails() ])
 }
