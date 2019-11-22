@@ -4,41 +4,58 @@ import { bindActionCreators } from 'redux';
 import Poster from './Poster'
 import Title from './Title';
 import Info from './Info';
+import Modal from './Modal';
 import { getMovieDetails, getConfig} from '../../../store/selectors/movies';
-import { showSelectedMovie } from '../../../store/actions/actions';
+import { showSelectedMovie, receiveConfig } from '../../../store/actions/actions';
 
 
-const mapStateToProps = (state) => ({  movieDetails: getMovieDetails(state)})
+const mapStateToProps = (state) => ({  movieDetails: getMovieDetails(state), config: getConfig(state)})
 class Movie  extends Component {
     constructor(props) {
         super(props);
-        this.state = { movieDetails: {} }
-        this.boundActions = bindActionCreators({ showSelectedMovie }, props.dispatch)
+        this.state = { movieDetails: {}, show: false, config: {} }
+        this.boundActions = bindActionCreators({ showSelectedMovie, receiveConfig }, props.dispatch)
 
     }
     componentDidMount() {
         let { id } = this.props.match.params;
         let action = showSelectedMovie(id);
         this.props.dispatch(action)
+        let getConfig = receiveConfig();
+        this.props.dispatch(getConfig);
     }
-    
-    handleDetails() {
-        const query = this.state.id;
-        this.props.onDetails(query);
-    };
     static getDerivedStateFromProps(props) {
-        const { movieDetails } = props
+        const { movieDetails, config } = props
         return {
-            movieDetails
+            movieDetails, config
         }
     }
+    showModal() {
+        this.setState({show: true}, function () {
+            console.log(this.state.show);
+        });
+      };
+    
+      hideModal() {
+        this.setState({show: false}, function () {
+            console.log(this.state.show);
+        });
+      };
     render() {
+        const { overview, title, runtime, poster_path, vote_average } = this.state.movieDetails;
+        const { images } = this.state.config;
+        const  imagePath = `${ images.base_url }/${ images.backdrop_sizes[1]}${ poster_path}`
         return (
-            <div>
-                {/* <Poster imagePath={ imagePath } />
-                <Title title={ title } />
-                <Info synopsis={ overview } /> */}
-                Hi
+            <div className="details_container">
+                <Poster className="details_image" imagePath={ imagePath } />
+                <Title className="details_title" title={ title } />
+                <Info className="details_synopsis" synopsis={ overview } />
+                <span><Title title={ `Runtime: ${runtime} minutes`}/><Title title={`Rating ${vote_average} / 10`}/></span>
+                <button onClick={() => this.showModal()}> play</button>
+                <Modal show={this.state.show} handleClose={() => this.hideModal()}>
+                    <p>Modal</p>
+                    <p>Data</p>
+                </Modal>
             </div>
         )
     }

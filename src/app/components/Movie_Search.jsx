@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { doFetchMovies, doAddMovieConfig} from '../../../store/actions/actions';
 
-const mapDispatchToProps = (dispatch) =>{
-    return {
-        onFetchPopular: query => dispatch(doFetchMovies(query)),
-        onFetchTop: query => dispatch(doFetchMovies(query)),
-        onFetchConfig: () => dispatch(doAddMovieConfig())
-    }
-}
 class MovieSearch extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +14,7 @@ class MovieSearch extends Component {
     this.handlePopular = this.handlePopular.bind(this);
     this.handleTopRated = this.handleTopRated.bind(this);
     this.handleConfig = this.handleConfig.bind(this);
+    this.boundActions = bindActionCreators({ doFetchMovies, doAddMovieConfig }, props.dispatch);
   };
   componentDidMount() {
       this.handlePopular();

@@ -1,12 +1,12 @@
-import  { MOVIE_CONFIG, CONFIG_UPDATE } from '../actions/action_types';
+import  { RECEIVE_CONFIG, ADD_CONFIG_TO_STORE } from '../actions/action_types';
 const INITIAL_STATE = {};
 
 function movieConfigReducer(state=INITIAL_STATE, action) {
     switch (action.type) {
-        case MOVIE_CONFIG: {
-            return { ...action.payload }
+        case RECEIVE_CONFIG: {
+            return { ...state }
         }
-        case CONFIG_UPDATE: {
+        case ADD_CONFIG_TO_STORE: {
             return { ...action.payload }
         }
         default: return state
