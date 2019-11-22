@@ -5,8 +5,8 @@ const Modal = ({ handleClose, show, videoId }) => {
     const onReady = (event) => event.target.pauseVideo();
     const showHideClassName = show ? "show" : "remove";
     const opts = {
-        height: '390',
-        width: '640',
+        height: '800',
+        width: '1080',
         playerVars: {
             autoplay: 1
         }
@@ -19,7 +19,7 @@ const Modal = ({ handleClose, show, videoId }) => {
           opts={opts}
           onReady={ onReady } 
           />
-          <div className="btn btn-play" onClick={handleClose}><span>close</span></div>
+          <div className="btn btn-play" onClick={ (e) => (handleClose, onReady.call(this, e)) }><span>close</span></div>
         </section>
       </div>
     );
