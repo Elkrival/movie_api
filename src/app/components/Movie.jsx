@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({  movieDetails: getMovieDetails(state), con
 class Movie  extends Component {
     constructor(props) {
         super(props);
-        this.state = { movieDetails: {}, show: false, config: {} }
+        this.state = { movieDetails: {}, show: false, config: {}, videoId: '' }
         this.boundActions = bindActionCreators({ showSelectedMovie, receiveConfig }, props.dispatch)
 
     }
@@ -31,8 +31,9 @@ class Movie  extends Component {
         }
     }
     showModal() {
-        this.setState({show: true}, function () {
-            console.log(this.state.show);
+        const videoId = this.props.movieDetails.videos.results.find(el => el.site === 'YouTube' && el.type === 'Trailer').key;
+        this.setState({show: true, videoId}, function () {
+            console.log(this.state.show, this.state.videoId);
         });
       };
     
@@ -51,11 +52,9 @@ class Movie  extends Component {
                 <Title className="details_title" title={ title } />
                 <Info className="details_synopsis" synopsis={ overview } />
                 <span><Title title={ `Runtime: ${runtime} minutes`}/><Title title={`Rating ${vote_average} / 10`}/></span>
-                <button onClick={() => this.showModal()}> play</button>
-                <Modal show={this.state.show} handleClose={() => this.hideModal()}>
-                    <p>Modal</p>
-                    <p>Data</p>
-                </Modal>
+                <div className="btn btn-play" onClick={() => this.showModal()}><span> Watch Trailer</span></div>
+                <Modal videoId={ this.state.videoId }show={this.state.show} handleClose={() => this.hideModal()} />
+                   
             </div>
         )
     }

@@ -1,12 +1,25 @@
 import React from 'react';
+import YouTube from 'react-youtube';
 
-const Modal = ({ handleClose, show, children }) => {
+const Modal = ({ handleClose, show, videoId }) => {
+    const onReady = (event) => event.target.pauseVideo();
     const showHideClassName = show ? "show" : "remove";
+    const opts = {
+        height: '390',
+        width: '640',
+        playerVars: {
+            autoplay: 1
+        }
+    }
     return (
       <div className={showHideClassName}>
         <section className="modal-main">
-          {children}
-          <button onClick={handleClose}>close</button>
+          <YouTube 
+          videoId={ videoId }
+          opts={opts}
+          onReady={ onReady } 
+          />
+          <div className="btn btn-play" onClick={handleClose}><span>close</span></div>
         </section>
       </div>
     );
