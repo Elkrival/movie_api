@@ -30,7 +30,9 @@ module.exports = {
             template: 'dist/index.html'
         }),
         new EnvironmentPlugin({ 
-            "API_KEY": 'ADD_API_KEY_HERE'
+            "API_KEY": '0a12f622cf73e8bbf38643081189bb9c',
+            "MOVIE_URL": 'https://api.themoviedb.org/3/movie/',
+            "CONFIG_URL": 'https://api.themoviedb.org/3/configuration?'
         })
     ], 
     devServer: {
