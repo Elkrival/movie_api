@@ -9,7 +9,8 @@ import { rootSaga } from './sagas'
 const sagaMiddleware = createSagaMiddleware()
 const persistConfig = {
     key: "root",
-    storage
+    storage,
+    blacklist: ['modalState']
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(persistedReducer, undefined , compose(applyMiddleware(sagaMiddleware), composeWithDevTools()));

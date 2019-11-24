@@ -11,5 +11,8 @@ function getMovieDetails(state) {
 }
 function getConfig(state) {
     return state.configState
+};
+function getTrailerId(state) {
+    return state.currentMovieState.videos.results.filter(el => el.type === 'Trailer' && el.site === 'YouTube')[0].key;
 }
-export { getPopular, getTopRated, getMovieDetails, getConfig }
+export { getPopular, getTopRated, getMovieDetails, getConfig, getTrailerId }

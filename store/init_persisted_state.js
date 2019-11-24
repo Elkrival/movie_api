@@ -2,6 +2,7 @@ const INIT_STATE = {
     popularState : [], 
     topRatedState : [], 
     currentMovieState: {}, 
-    configState: {}
+    configState: {},
+    modalState: false
 }
 export default INIT_STATE

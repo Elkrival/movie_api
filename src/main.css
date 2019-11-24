@@ -1,9 +1,15 @@
 body {
-    font-family: 'Dosis', sans-serif;
+	font-family: 'Dosis', sans-serif;
+}
+.overlay-content {
+	font-family: 'Dosis', sans-serif;
     margin: 0 auto;
     height: 100%;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+.overlay-hide-content {
+	background: white;
 }
 .wrapper{
     font-family: 'Dosis', sans-serif;
@@ -45,10 +51,11 @@ body {
     grid-row: 2;
 }
 .show {
-    display: inline-block;
+	display: inline-block;
 }
 .remove {
-    display: none;
+	display: none;
+	font-family: 'Dosis', sans-serif;
 }
 .btn {
 	line-height: 50px;
@@ -95,8 +102,9 @@ body {
 	transform: scale(1,1);
 }
 .modal-main{
-    float: left;
+    /* float: left;
       position: relative;
-      left: 0%;
-      bottom: 93%
+	  bottom: 93% */
+	  left: 13%;
+	  position:fixed;
 }
